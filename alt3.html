@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ALT 3 - match simulation</title>
+    <style>
+        /* Your existing CSS remains the same */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        nav {
+            margin: 20px 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        /* Hide all content sections by default */
+        .content-section {
+            display: none;
+        }
+
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+		
+		table {
+            width: 100%;
+        }
+
+        table, td, tr, th {
+            border: 2px solid grey;
+            border-radius: 5px;
+        }
+
+        table td {
+            width: 50%;
+            place-items: center;
+        }
+
+        table td p {
+            margin: 5px 10px;
+        }
+
+        table img {
+            width: 50%;
+            margin-left: 25%;
+        }
+
+        .long-img {
+            width: 59%;
+        }
+        
+        #sim {
+            position: relative;
+        }
+        
+        #overlay {
+            background-color: hsla(0, 0%, 20%, 90%);
+            border-radius: 5px;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        #load {
+            z-index: 100;
+            flex: 100%;
+        }
+        
+        #ring {
+            stroke-dashoffset: 0;
+            animation: loading 4s infinite;
+        }
+        
+        @keyframes loading {
+            0% {
+                stroke-dashoffset: 0;
+            } 100% {
+                stroke-dashoffset: -471.2;
+            }
+        }
+        
+        #overlay p {
+            color: hsl(0, 0%, 100%);
+            font-size: 1.2rem;
+        }
+        
+        #inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        #inputs input {
+            width: 100%;
+            padding: .25rem;
+            border: 1px solid hsl(0 0 70);
+            border-radius: 5px;
+            box-shadow: 3px 2px 4px hsl(0 0 60)
+        }
+        
+        #inputs button {
+            padding: .5rem;
+            border: 1px solid hsl(0 0 70);
+            border-radius: 5px;
+            box-shadow: 3px 2px 4px hsl(0 0 60);
+        }
+        
+        #inputs button:hover {
+            box-shadow: 1px 1px 2px hsl(0 0 60);
+        }
+        
+        #teams, team1, draw, team2 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #teams {
+            justify-content: space-evenly;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ALT 3 - Match Simulation</h1>
+		<img src="../Pictures/Screenshots/cover_page.PNG"  style="width:512px;height:256px;">
+        <nav>
+            <a href="#" onclick="showSection('home')">Home</a>
+            <a href="#" onclick="showSection('analysis')">Analysis of brief</a>
+            <a href="#" onclick="showSection('aims')">Key aims and objectives</a>
+            <a href="#" onclick="showSection('research')">Research and investigation</a>
+            <a href="#" onclick="showSection('project')">Our Project</a>
+            <a href="#" onclick="showSection('evaluation')">Evaluation</a>
+            <a href="#" onclick="showSection('reflection')">Reflection</a>
+            <a href="#" onclick="showSection('bibliography')">Bibliography</a>
+			<a href="#" onclick="showSection('sim')">Simulation</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="content-section">
+            <div class="card">
+                <h2>Welcome!</h2>
+                <p>This is our ALT 3 project on match simulation.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Analysis of brief</h3>
+                <p>Identifying the brief and understanding it.</p>
+                <a href="#" onclick="showSection('analysis')" class="btn">Learn More</a>
+            </div>
+            
+            <div class="card">
+                <h3>Key aims and objectives</h3>
+                <p>Identifying our plan of operation and its goals</p>
+                <a href="#" onclick="showSection('aims')" class="btn">Learn More</a>
+            </div>
+            
+            <div class="card">
+                <h3>Research and investigation</h3>
+                <p>Researching what is relevant to our project and how we can use it.</p>
+                <a href="#" onclick="showSection('research')" class="btn">Learn More</a>
+            </div>
+            
+            <div class="card">
+                <h3>Our Project</h3>
+                <p>Our project is based on simulating 2 teams previous results and determining what the outcome would be between the teams.</p>
+                <a href="#" onclick="showSection('project')" class="btn">Learn More</a>
+            </div>
+            
+            <div class="card">
+                <h3>Evaluation</h3>
+                <p>Evaluating our project and determining if it was a success or a failure.</p>
+                <a href="#" onclick="showSection('evaluation')" class="btn">Learn More</a>
+            </div>
+
+            <div class="card">
+                <h3>Reflection</h3>
+                <p>Reviewing what we could have done differently in the project.</p>
+                <a href="#" onclick="showSection('reflection')" class="btn">Learn More</a>
+            </div>
+			
+            <div class="card">
+                <h3>Bibliography</h3>
+                <p>References.</p>
+                <a href="#" onclick="showSection('bibliography')" class="btn">Learn More</a>
+            </div>
+			<div class="card">
+                <h3>Simulation of Model</h3>
+                <p>Compare two teams</p>
+                <a href="#" onclick="showSection('sim')" class="btn">View Model</a>
+            </div>
+        </section>
+
+        <!-- Analysis of brief Section -->
+        <section id="analysis" class="content-section">
+            <div class="card">
+                <h2>Analysis of Brief</h2>
+                <p>In our brief we are asked to develop a model which allows different scenarios to be tested. We were also asked to be able to analyse and interpret the outcomes of the simulation both before and after modifications had been made.</p>
+				<p>The benefits of using agent based modelling (ABM) is that it can help describe complex environments from a swarm of bees to motorists in traffic by applying a simple set of rules to each individual's behaviour.  <p>
+                <p>In addition, if the agents or the environment are new and perhaps untested, ABM’s can be used for simulation to examine emergent behaviours. These are behaviours that are observed in the environment as a whole but are not observed in the individual agents. The behaviours only emerge when the agents interact in the environment. <p>
+				
+                <div class="nav-buttons">
+                    <a href="#" onclick="showSection('home')" class="btn">Back to Home</a>
+                    <a href="#" onclick="showSection('aims')" class="btn">Next: Key Aims</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key aims and objectives Section -->
+        <section id="aims" class="content-section">
+            <div class="card">
+                <h2>Key Aims and Objectives</h2>
+                <p>In our project our main aim is to predict the probability of the outcome of a game between 2 teams (Man United & Liverpool). We want to be able to retrieve data on their past 5 results and compare them to determine what the outcome would be between the 2 teams.</p>
+                 <h3>Objectives:</h3>
+                <ul>
+                    <li>Create code that enables us to retrieve results.</li>
+                    <li>Calculate the form based on the results</li>
+                    <li>Compare the results</li>
+					<li>Tell the user who the better team is based on the previous results</li>
+                </ul>
+				
+                <div class="nav-buttons">
+                    <a href="#" onclick="showSection('home')" class="btn">Back to Home</a>
+                    <a href="#" onclick="showSection('analysis')" class="btn">Previous: Analysis</a>
+                    <a href="#" onclick="showSection('research')" class="btn">Next: Research</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research and investigation Section -->
+        <section id="research" class="content-section">
+            <div class="card">
+                <h2>Research and Investigation</h2>
+                <p>At the beginning of the project we thought that we would be able to import the premier-league python library so we could import the results for the games. However when we ran this in python the request for this library was unsuccessful. We managed to find a workaround by importing the data through an already established api. From the website: https://www.football-data.org/ we were able to retrieve the results for all premier league games. </p>
+                <p>We also needed to programme code that could then calculate the probability based on these results. We learned we would need to use if/elif/else statements to determine the form and probability of a certain team winning. We also ran into a road block when we realised we never coded anything in for if the teams had equal results. We resolved this by adding an else statement which added a ‘draw’ variable to the code<p>
+				<p>For our html code we used a past website from a previous alt. This would reduce the time of coding the website drastically.  However in researching the previous code we realised that there was a problem with the content as each section showed the same content. We resolved this by changing the classification of each page and using javascript to hide the other sections.<p>
+				<p>
+                    Embedded systems are designed to carry out specific tasks as either an independent system or part of a larger system. They are used in many instances in both school and home environments. Some examples are:
+                </p>
+                <br>
+                <table>
+                    <tr>
+                        <th>Description</th>
+                        <th>Image</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><b>Climate Modelling - </b>Meteorologists use these models to predict weather patterns and climate changes.</p>
+                        </td>
+                        <td>
+                            <img src="https://www.drroyspencer.com/wp-content/uploads/climate-model-2.jpg">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p><b>Epidemic Outbreak Models - </b>Computer models are used to simulate the spread of infectious diseases and the effectiveness of various interventions. Examples of this was seen during the COVID-19 pandemic.</p></td>
+                        <td>
+                            <img class="long-img" src="https://media.path.org/images/Flattenthecurve.2e16d0ba.fill-1200x630.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p><b>Car Crash Simulations - </b>Car manufacturers use these simulations to virtually crash-test their new vehicles. Instead of physically crashing dozens of cars, researchers run simulations to see all possible scenarios that could occur to both the vehicle and passengers in a multitude of accidents.</p></td>
+                        <td>
+                            <img src="https://images.computerhistory.org/makesoftware/mscw.car-crash-simulation.computers-vs-crashes.real-and-simulated-car-crash.jpg?w=840">
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <p>
+                    Through these examples of embedded systems that we found, we were able to get an idea of what kind of project we wanted to make and how we would have to deal with inputs correctly in order to produce the desirable functional output.
+                </p>
+                <div class="nav-buttons">
+                    <a href="#" onclick="showSection('home')" class="btn">Back to Home</a>
+                    <a href="#" onclick="showSection('aims')" class="btn">Previous: Key Aims</a>
+                    <a href="#" onclick="showSection('project')" class="btn">Next: Our Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Project Section -->
+        <section id="project" class="content-section">
+            <div class="card">
+                <h2>Our Project</h2>
+				<br>
+				<h3>Modelling and Simulation Idea</h3>
+                <p>The modelling and simulation idea that we had was a model to simulate the match result between two teams to predict the most likely outcome, (win, lose or draw), based on various factors of previous performance, such as recent form.</p>
+				<h3>What we chose</h3>
+                <p>The model we have made is a statistical model that operates on various factors in the past performance of both teams, analysing them to produce an output. </p>
+				<p>We have chosen this model idea because we find it to be an interesting area to explore and believe it will present some interesting challenges that will both be difficult but achievable to overcome.</p>
+				<p>The primary thing we are focusing on in this model is the recent form of each team over the five previous games and applying certain weightings to each game.</p>
+				<p>The primary scenario would be when one team has a better form than the other team, then the model would show them as the most likely to win. Another example of a scenario would be if both teams have an equal form, then the model should show the most likely outcome as a draw.</p>
+				<p>The system will fetch the recent games of each team and assign different weightings to their result. Based on this each team will receive a form rating and the probability of each outcome of the match is calculated based on these ratings.</p>
+				<h3>Pseudocode</h3>
+				<p>Fetch data<br>
+				For each match - apply weighting to result based on recency<br>
+				Calculate form ratings<br>
+				Incorporate points per game and previous head-to-head with form ratings<br>
+				Compare form ratings and determine most likely result<br>
+				Calculate probabilities for each outcome<br>
+				Output results</p>
+				<h4>Coding<h4>
+				<p>Here are some snippets of our coding:<p>
+				<img src="../Pictures/Screenshots/code_part1.PNG"  style="width:512px;height:256px;">
+				<img src="../Pictures/Screenshots/code_part3.PNG"  style="width:512px;height:256px;">
+				<img src="../Pictures/Screenshots/code2_part1.PNG"  style="width:512px;height:256px;">
+				<img src="../Pictures/Screenshots/code2_part4.PNG"  style="width:512px;height:256px;">
+				<p>html:<p>
+				<img src="../Pictures/Screenshots/html_code1.PNG"  style="width:512px;height:256px;">
+				<img src="../Pictures/Screenshots/html_code2.PNG"  style="width:512px;height:256px;">
+				<p>javascript:<p>
+				<img src="../Pictures/Screenshots/javascript.PNG"  style="width:512px;height:256px;">
+				<div class="nav-buttons">
+                    <a href="#" onclick="showSection('home')" class="btn">Back to Home</a>
+                    <a href="#" onclick="showSection('research')" class="btn">Previous: Research</a>
+                    <a href="#" onclick="showSection('evaluation')" class="btn">Next: Evaluation</a>
+                </div>
+			</div>
+        </section>
+
+        <!-- Evaluation Section -->
+        <section id="evaluation" class="content-section">
+            <div class="card">
+                <h2>Evaluation</h2>
+                <p>On finishing the project we managed to complete our goals of creating a programme that retrieves data and is able to compute the different results of each team</p>
+                <ul>
+                    <li>Create code that enables us to retrieve results.  - we were able to create a programme that retrieves the results of teams from an already established website</li>
+                    <li>Calculate the form based on the results. - after we retrieve the results we the were able to use more python code to calculate the form of each team and how they compare with each other</li>
+                    <li>Finally, we were able to use code to tell the user  which team is better and why they are the better team</li>
+                </ul>
+				
+				<p>To evaluate we believe that we completed all our goals that we set out to do at the beginning of the ALT<p>
+				
+                <div class="nav-buttons">
+                    <a href="#" onclick="showSection('home')" class="btn">Back to Home</a>
+                    <a href="#" onclick="showSection('project')" class="btn">Previous: Our Project</a>
+                    <a href="#" onclick="showSection('reflection')" class="btn">Next: Reflection</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection Section -->
+        <section id="reflection" class="content-section">
+            <div class="card">
+                <h2>Reflection</h2>
+                <p>Looking back on our project there are obviously things we would have done differently. If we were to do it again we would have probably altered the code so that it could be used on many different teams instead of 2 set ones. Also, if we had more time on our Alt we would have added more different and complex variables to our code. Another element we could have changed is having more user interaction. Using the code the user is only asked to input the team names and they have the results, we could have also got them to save their results and compare them later on in the year if we had more time.</p>
+                
+                <div class="nav-buttons">
+                    <a href="#" onclick="showSection('home')" class="btn">Back to Home</a>
+                    <a href="#" onclick="showSection('evaluation')" class="btn">Previous: Evaluation</a>
+                    <a href="#" onclick="showSection('bibliography')" class="btn">Next: Bibliography</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bibliography Section -->
+        <section id="bibliography" class="content-section">
+            <div class="card">
+                <h2>Bibliography</h2>
+                <p>Your references and citations go here...</p>
+                
+                <h3>References:</h3>
+                <ul>
+                    <li><a href="https://www.football-data.org/"> Football Data api</a></li>
+                    <li><a href="https://www.w3schools.com/">Visit W3Schools.com!</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <a href="#" onclick="showSection('home')" class="btn">Back to Home</a>
+                    <a href="#" onclick="showSection('reflection')" class="btn">Previous: Reflection</a>
+					<a href="#" onclick="showSection('sim')" class="btn">Next: Simulation</a>
+                </div>
+            </div>
+        </section>
+		
+		<!-- Sim Section-->
+		<section id="sim" class="content-section">
+            <div id="overlay">
+                <svg id="load" width="130" height="130" viewBox="0 0 130 130">
+                    
+                    <circle id="ring" cx="65" cy="65" r="37.5" stroke="#00bcd4" stroke-width="5" fill="none" stroke-dasharray="235.6" stroke-dashoffset="200" transform="rotate(-90 65 65)" />
+                </svg>
+                <p>This may take a few moments</p>
+            </div>
+            <div class="card">
+                <h2>Simulation</h2>
+                <p>Content about aims and objectives goes here...</p>
+
+                <div id="inputs">
+                    <input type="text" name="T1" id="T1" placeholder="Enter the name of the home team...">
+                    <input type="text" name="T2" id="T2" placeholder="Enter the name of the away team...">
+                    <button onClick="submitTeams()">Analyse Teams</button>
+                </div>
+
+                <div id="outputs">
+                    <h3> Probability Analysis</h3>
+                    <div id="teams">
+                        <div id="team1">
+                            <p>Home</p>
+                            <img src="">
+                            <p>Win Probability: <span id="homeWin"></span></p>
+                        </div>
+                        <div id="draw">
+                            <p>Form Difference: <span id="form"></span></p>
+                            <p>Draw Probability: <span id="drawRes"></span></p>
+                        </div>
+                        <div id="team2">
+                            <p>Away</p>
+                            <img src="">
+                            <p>Win Probability: <span id="awayWin"></span></p>
+                        </div>
+                    </div>
+                    <p></p>
+                </div>
+
+                <div class="nav-buttons">
+                    <a href="#" onclick="showSection('home')" class="btn">Back to Home</a>
+                    <a href="#" onclick="showSection('bibliography')" class="btn">Previous: Bibliography</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Match Simulation Project</p>
+    </footer>
+
+    <script>
+        // Show the home section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+
+        // Function to show a specific section and hide others
+        function showSection(sectionId) {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show the requested section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+	<script src="python.js"></script>
+</body>
+</html>
+
+
